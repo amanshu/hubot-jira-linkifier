@@ -22,9 +22,8 @@ describe 'jira-linkifier', ->
   it "reads HUBOT_JIRA_LINKIFIER_PROJECT_PREFIXES env variable for a list of prefixes to match", ->
     expect(process.env.HUBOT_JIRA_LINKIFIER_PROJECT_PREFIXES).to.equal(@prefixes)
 
-
   it "registers a hear to listener for matching patterns like '<prefix>-<numbers>'", ->
-    ticketRegExp = new RegExp "(^|\\s+)(XXX|YYY|ZZZ)-[0-9]+($|\\s+)", "gi"
+    ticketRegExp = new RegExp "(?:\\s+)(?:XXX|YYY|ZZZ)-[0-9]+(?:\\s+)", "gi"
     expect(@robot.hear).to.have.been.calledWith(ticketRegExp)
 
 
